@@ -17,10 +17,10 @@ function save(data){
 }
 
 /**
- * Gets all quotes
+ * Gets all contacts
  * @param None
  */
-function getQuotes(){
+function getContacts(){
   return new Promise((resolve, reject) => {
     fs.readFile('data.json', 'utf8', (err, data) => {
       if (err) {
@@ -34,66 +34,65 @@ function getQuotes(){
 }
 
 /**
- * Gets a specific quote by ID
- * @param {number} id - Accepts the ID of the specified quote.
+ * Gets a specific contact by ID
+ * @param {number} id - Accepts the ID of the specified contact.
  */
-async function getQuote(id){
-  const quotes = await getQuotes();
-  return quotes.records.find(record => record.id == id);
+async function getContact(id){
+  const contacts = await getContacts();
+  return contacts.records.find(record => record.id == id);
 }
 /**
- * Gets a random quote 
+ * Gets a random contact 
  * @param None
  */
-async function getRandomQuote(){
-  const quotes = await getQuotes();
-  const randNum = Math.floor(Math.random() * quotes.records.length);
-  return quotes.records[randNum];
+async function getRandomContact(){
+  const Contacts = await getContacts();
+  const randNum = Math.floor(Math.random() * contacts.records.length);
+  return contacts.records[randNum];
 }
 
 /**
- * Creates a new quote record 
- * @param {Object} newRecord - Object containing info for new quote: the quote text, author and year 
+ * Creates a new contact record 
+ * @param {Object} newContact - Object containing info for new contact: the contact text, author and year 
  */
-async function createQuote(newRecord) {
-  const quotes = await getQuotes(); 
+async function createContact(newContact) {
+  const contacts = await getContacts(); 
   
-  newRecord.id = generateRandomId(); 
-  quotes.records.push(newRecord);
-  await save(quotes); 
-  return newRecord; 
+  newContact.id = generateRandomId(); 
+  contacts.records.push(newContact);
+  await save(contacts); 
+  return newContact; 
 }
 
 /**
  * Updates a single record 
- * @param {Object} newQuote - An object containing the changes to quote: quote, author, year (all optional)
+ * @param {Object} newContact - An object containing the changes to contact: contact, author, year (all optional)
  */
-async function updateQuote(newQuote){
-  const quotes = await getQuotes();
-  let quote = quotes.records.find(item => item.id == newQuote.id);
+async function updateContact(newContact){
+  const contacts = await getcontacts();
+  let contact = contacts.records.find(item => item.id == newContact.id);
   
-  quote.quote = newQuote.quote;
-  quote.author = newQuote.author;
-  quote.year = newQuote.year;
+  contact.contact = newContact.contact;
+  contact.author = newContact.author;
+  contact.year = newContact.year;
  
-  await save(quotes);
+  await save(contacts);
 }
 
 /**
  * Deletes a single record
- * @param {Object} record - Accepts record to be deleted. 
+ * @param {Object} contact - Accepts record to be deleted. 
  */
-async function deleteQuote(record){
-  const quotes = await getQuotes();
-  quotes.records = quotes.records.filter(item => item.id != record.id);
-  await save(quotes);
+async function deleteContact(record){
+  const contacts = await getcontacts();
+  contacts.records = contacts.records.filter(item => item.id != record.id);
+  await save(contacts);
 }
 
 module.exports = {
-  getQuotes,
-  getQuote, 
-  createQuote, 
-  updateQuote, 
-  deleteQuote,
-  getRandomQuote
+  getContacts,
+  getContact, 
+  createContact, 
+  updateContact, 
+  deleteContact,
 }
