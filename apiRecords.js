@@ -60,8 +60,8 @@ async function createContact(newContact) {
  * @param {Object} newContact - An object containing the changes to contact: contact, position, year (all optional)
  */
 async function updateContact(newContact){
-  const contacts = await getcontacts();
-  let contact = contacts.records.find(item => item.id == newContact.id);
+  const contacts = await getContacts();
+  let contact = contacts.contacts.find(item => item.id == newContact.id);
   
   contact.contact = newContact.contact;
   contact.position = newContact.position;

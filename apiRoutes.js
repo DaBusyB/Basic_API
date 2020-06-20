@@ -23,26 +23,25 @@ router.get('/contacts/:id', async (req, res, next) => {
     } catch(err) {
         next(err)
     }
-    
 })
 
-// router.put('/contacts/:id', async (req, res, next) => {
-//     try {
-    //     const contact = await contacts.getContact(req.params.id)
+router.put('/contacts/:id', async (req, res, next) => {
+    try {
+        const contact = await records.getContact(req.params.id)
 
-    //     if(contact) {
-    //         contact.contact = req.body.contact
-    //         contact.position = req.body.position
+        if(contact) {
+            contact.contact = req.body.contact
+            contact.position = req.body.position
 
-    //         await records.updateContact(contact)
-    //         res.status(204).end()
-    //     } else {
-    //         res.status(404).json({message: "Quote not found"})
-    //     }
-    // } catch(err) {
-    //     next(err)
-//}
-// })
+            await records.updateContact(contact)
+            res.status(204).end()
+        } else {
+            res.status(404).json({message: "Quote not found"})
+        }
+    } catch(err) {
+        next(err)
+    }
+})
 
 // router.post('/contacts', async (req, res, next) => {
 //     try {
