@@ -39,7 +39,7 @@ function getContacts(){
  */
 async function getContact(id){
   const contacts = await getContacts();
-  return contacts.records.find(record => record.id == id);
+  return contacts.contacts.find(contact => contact.id == id); //here
 }
 
 /**
@@ -47,11 +47,11 @@ async function getContact(id){
  * @param {Object} newContact - Object containing info for new contact: the contact text, position and year 
  */
 async function createContact(newContact) {
-  const contacts = await getContacts(); 
+  const getContacts = await getContacts(); 
   
   newContact.id = generateRandomId(); 
-  contacts.records.push(newContact);
-  await save(contacts); 
+  getContacts.contacts.push(newContact);
+  await save(getContacts); 
   return newContact; 
 }
 
