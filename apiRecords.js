@@ -46,14 +46,14 @@ async function getContact(id){
  * @param None
  */
 async function getRandomContact(){
-  const Contacts = await getContacts();
+  const contacts = await getContacts();
   const randNum = Math.floor(Math.random() * contacts.records.length);
   return contacts.records[randNum];
 }
 
 /**
  * Creates a new contact record 
- * @param {Object} newContact - Object containing info for new contact: the contact text, author and year 
+ * @param {Object} newContact - Object containing info for new contact: the contact text, position and year 
  */
 async function createContact(newContact) {
   const contacts = await getContacts(); 
@@ -66,14 +66,14 @@ async function createContact(newContact) {
 
 /**
  * Updates a single record 
- * @param {Object} newContact - An object containing the changes to contact: contact, author, year (all optional)
+ * @param {Object} newContact - An object containing the changes to contact: contact, position, year (all optional)
  */
 async function updateContact(newContact){
   const contacts = await getcontacts();
   let contact = contacts.records.find(item => item.id == newContact.id);
   
   contact.contact = newContact.contact;
-  contact.author = newContact.author;
+  contact.position = newContact.position;
   contact.year = newContact.year;
  
   await save(contacts);
