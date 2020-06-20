@@ -1,0 +1,21 @@
+{
+    "records": [
+        {
+            "id": 1,
+            "contact": "Papa Smurf",
+            "position": "Leader and Patriarch of Smurf Village"
+        },
+
+        {
+            "id": 2,
+            "contact": "Brainy Smurf",
+            "position": "Village know it all and generally annoying smurf"
+        },
+
+        {
+            "id": 3,
+            "contact": "Silly Smurf",
+            "position": "Village goofball and practical joker"
+        }
+    ]
+}
