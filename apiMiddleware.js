@@ -1,9 +1,9 @@
-const routes = require('./apiRoutes') //use api routes to route to use /api
+const apiRoutes = require('./apiRoutes') //use api routes to route to use /api
 const express = require('express') //bring express into the project
 const app = express()
 
 app.use(express.json()) //we want anything returned to the body, including errors to be json, not text or html
-app.use('/api', routes) //must have /api in the path or api will not work
+app.use('/api', apiRoutes) //must have /api in the path or api will not work
 
 app.use((req, res, next) => { //response to queries that dont exist
     const err = new Error("Not found")
@@ -18,7 +18,6 @@ app.use((err, req, res, next) => { //error handler
             message: err.message
         }
     })
-
 })
 
 const port = 3001
