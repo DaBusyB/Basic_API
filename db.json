@@ -1,5 +1,5 @@
 {
-  "contacts": [
+  "contactsRecords": [
     {
       "id": 1,
       "contact": "Papa Smurf",
@@ -18,7 +18,12 @@
     {
       "contact": "Angry Smurf",
       "position": "The village grump",
-      "id": 1110
+      "id": 1385
+    },
+    {
+      "contact": "Sleepy Smurf",
+      "position": "The village's sleepiest smurf'",
+      "id": 4421
     }
   ]
 }

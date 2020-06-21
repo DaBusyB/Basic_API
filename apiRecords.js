@@ -39,7 +39,7 @@ function getContacts(){
  */
 async function getContact(id){
   const contacts = await getContacts();
-  return contacts.contacts.find(contact => contact.id == id); //here
+  return contacts.contactsRecords.find(contact => contact.id == id); //here
 }
 
 /**
@@ -50,7 +50,7 @@ async function createContact(newContact) {
   const contacts = await getContacts(); 
 
   newContact.id = generateRandomId(); 
-  contacts.contacts.push(newContact);
+  contacts.contactsRecords.push(newContact);
   await save(contacts); 
   return newContact; 
 }
@@ -61,7 +61,7 @@ async function createContact(newContact) {
  */
 async function updateContact(newContact){
   const contacts = await getContacts();
-  let contact = contacts.contacts.find(contact => contact.id == newContact.id);
+  let contact = contacts.contactsRecords.find(contact => contact.id == newContact.id);
   
   contact.contact = newContact.contact;
   contact.position = newContact.position;
@@ -76,7 +76,7 @@ async function updateContact(newContact){
  */
 async function deleteContact(contact){
   const contacts = await getContacts();
-  contacts.contacts = contacts.contacts.filter(contact => contact.id != contact.id);
+  contacts.contactsRecords = contacts.contactsRecords.filter(contactRecord => contactRecord.id != contact.id);
   await save(contacts);
 }
 

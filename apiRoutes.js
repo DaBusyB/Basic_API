@@ -43,7 +43,7 @@ router.put('/contacts/:id', async (req, res, next) => {
     }
 })
 
-router.post('/contacts', async (req, res, next) => { //deleting contact and undefined is left in its place
+router.post('/contacts', async (req, res, next) => {
     try {
         if(req.body.contact && req.body.position) {
             const contact = await apiRecords.createContact({
@@ -60,7 +60,7 @@ router.post('/contacts', async (req, res, next) => { //deleting contact and unde
     }
 })
 
-router.delete('/contacts/:id', async (req, res, next) => { //deleting everything
+router.delete('/contacts/:id', async (req, res, next) => {
     try {
         const contact = await apiRecords.getContact(req.params.id)
 
