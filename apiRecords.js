@@ -51,7 +51,7 @@ async function createContact(newContact) {
 
   newContact.id = generateRandomId(); 
   contacts.contacts.push(newContact);
-  await save(getContacts); 
+  await save(contacts); 
   return newContact; 
 }
 
@@ -75,8 +75,8 @@ async function updateContact(newContact){
  * @param {Object} contact - Accepts record to be deleted. 
  */
 async function deleteContact(contact){
-  const contacts = await getcontacts();
-  contacts.records = contacts.records.filter(item => item.id != record.id);
+  const contacts = await getContacts();
+  contacts.contacts = contacts.contacts.filter(contact => contact.id != contact.id);
   await save(contacts);
 }
 

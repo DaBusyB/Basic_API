@@ -14,6 +14,11 @@
       "id": 3,
       "contact": "Silly Smurf",
       "position": "Village goofball and practical joker"
+    },
+    {
+      "contact": "Angry Smurf",
+      "position": "The village grump",
+      "id": 1110
     }
   ]
 }

@@ -43,7 +43,7 @@ router.put('/contacts/:id', async (req, res, next) => {
     }
 })
 
-router.post('/contacts', async (req, res, next) => {
+router.post('/contacts', async (req, res, next) => { //deleting contact and undefined is left in its place
     try {
         if(req.body.contact && req.body.position) {
             const contact = await apiRecords.createContact({
@@ -60,27 +60,19 @@ router.post('/contacts', async (req, res, next) => {
     }
 })
 
-// router.delete('/contacts/:id', async (req, res, next) => {
-//     try {
+router.delete('/contacts/:id', async (req, res, next) => { //deleting everything
+    try {
+        const contact = await apiRecords.getContact(req.params.id)
 
-//     } catch(err) {
-//          next(err)
-//     }
-// })
+        if(contact) {
+            await apiRecords.deleteContact(contact)
+            res.status(204).end()
+        } else {
+            res.status(404).json({message: "Contact not found"})
+        }
+    } catch(err) {
+         next(err)
+    }
+})
 
-// router.post('/contacts', async (req, res, next) => {
-//     try {
-
-//     } catch(err) {
-//         next(err)
-//     }
-// })
-
-// router.delete('/contacts/:id', async (req, res, next) => {
-//     try {
-
-//     } catch(err) {
-//          next(err)
-//     }
-// })
 module.exports = router
