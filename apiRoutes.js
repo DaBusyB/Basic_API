@@ -11,10 +11,12 @@ router.get('/contacts', async (req, res, next) => {
     }
 })
 
+//ACCEPTS INTEGER TYPE PARAMETER OF EXISTING ID YOU WANT TO RETRIEVE
 router.get('/contacts/:id', async (req, res, next) => {
     try {
+        
         const contact = await apiRecords.getContact(req.params.id)
-
+        
         if(contact) {
             res.json(contact)
         } else {
@@ -25,6 +27,7 @@ router.get('/contacts/:id', async (req, res, next) => {
     }
 })
 
+//ACCEPTS INTEGER TYPE PARAMETER OF EXISTING ID YOU WANT TO UPDATE
 router.put('/contacts/:id', async (req, res, next) => {
     try {
         const contact = await apiRecords.getContact(req.params.id)
@@ -60,6 +63,8 @@ router.post('/contacts', async (req, res, next) => {
     }
 })
 
+
+//ACCEPTS INTEGER TYPE PARAMETER OF EXISTING ID YOU WANT TO DELETE
 router.delete('/contacts/:id', async (req, res, next) => {
     try {
         const contact = await apiRecords.getContact(req.params.id)
